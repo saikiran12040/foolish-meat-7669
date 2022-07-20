@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create account & sign in</title>
+</head>
+<style>
+    #container{
+        display:grid;
+        grid-template-columns: repeat(2,400px);
+        grid-template-rows: repeat(1,600px);
+        justify-content: center;
+        align-items: center;
+    }
+    #container>div{
+        text-align: center;
+    }
+    #container div form h4{
+        margin:25px 0px 25px 0px;
+    }
+    #container div form div{
+        display:flex;
+        text-align: center;
+    }
+    #container div form div>div{
+        margin-left: 10px;
+    }
+    #container div form div{
+        margin:25px 0px 25px 0px;
+    }
+    #container div form #submit{
+        margin-bottom: 25px;
+    }
+    #container div form #password{
+        margin-bottom: 25px;
+    }
+    #confirm{
+        padding-bottom: 10px;
+        margin-bottom: 24px;
+    }
+
+
+</style>
+<body>
+    <div id="container">
+        <div>
+            <h2><b>Create account</b></h2>
+            <form>
+                <h4>Email-Address*</h4>
+                <input id="email" type="email" placeholder="enter your email"/>
+                <h4>password*</h4>
+                <div>
+                <div><input id="password" type="number" placeholder="password"/></div>
+                <div><input id="confirm" type="number" placeholder="confirm password"/></div>
+                </div>
+                <input id="submit" value="Create Account" style="background-color:blue; color:white;text-align: center"/><br>
+                <input id="continue" value="Continue as guest" style="text-align: center"/>
+            </form>
+
+        </div>
+        <div>
+            <h2><b>Sign In</b></h2>
+            <form>
+                <h4>Email-Address*</h4>
+                <input id="email" type="email" placeholder="enter your email"/>
+                <h4>password*</h4>
+                <input id="password" type="number" placeholder="password"/><br>
+                <input id="done" value="Sign in" style="background-color:green; color:white; text-align: center"/>
+                <p style="color:skyblue">Forgot password?</p>
+            </form>
+
+        </div>
+    </div>
+    
+</body>
+</html>
+<sript>
+
+</sript>
