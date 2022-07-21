@@ -12,6 +12,7 @@
         grid-template-rows: repeat(1,600px);
         justify-content: center;
         align-items: center;
+        gap: 50px;
     }
     #container>div{
         text-align: center;
@@ -39,6 +40,27 @@
         padding-bottom: 10px;
         margin-bottom: 24px;
     }
+    #email,input{
+        height:50px;
+        width:400px;
+        text-align:center;
+    }
+    #first #password,#first #confirm{
+        height:50px;
+        width:191px;
+    }
+    #done{
+        margin-top: 40px;
+    }
+    form>button{
+        height:50px;
+        width:400px;
+
+    }
+
+    
+    
+
 
 
 </style>
@@ -46,7 +68,7 @@
     <div id="container">
         <div>
             <h2><b>Create account</b></h2>
-            <form>
+            <form id="first">
                 <h4>Email-Address*</h4>
                 <input id="email" type="email" placeholder="enter your email"/>
                 <h4>password*</h4>
@@ -54,19 +76,19 @@
                 <div><input id="password" type="number" placeholder="password"/></div>
                 <div><input id="confirm" type="number" placeholder="confirm password"/></div>
                 </div>
-                <input id="submit" value="Create Account" style="background-color:blue; color:white;text-align: center"/><br>
-                <input id="continue" value="Continue as guest" style="text-align: center"/>
+                <input  type="submit" id="submit" value="Create Account" style="background-color:blue; color:white;text-align: center"/><br>
+                <button><a href="Navbar.html">Continue as guest</a></button>
             </form>
 
         </div>
         <div>
             <h2><b>Sign In</b></h2>
-            <form>
+            <form id="second">
                 <h4>Email-Address*</h4>
-                <input id="email" type="email" placeholder="enter your email"/>
+                <input id="email1" type="email" placeholder="enter your email"/>
                 <h4>password*</h4>
-                <input id="password" type="number" placeholder="password"/><br>
-                <input id="done" value="Sign in" style="background-color:green; color:white; text-align: center"/>
+                <input id="password1" type="number" placeholder="password"/><br>
+                <input type="submit" id="done" value="Sign in" style="background-color:green; color:white; text-align: center"/>
                 <p style="color:skyblue">Forgot password?</p>
             </form>
 
@@ -75,6 +97,60 @@
     
 </body>
 </html>
-<sript>
+<script>
+    document.querySelector("form").addEventListener("submit",createfunc);
+    let A=JSON.parse(localStorage.getItem("storeDetails")) || [];
+    function createfunc(){
+        event.preventDefault();
+        obj={
+            email:document.querySelector("#email").value,
+            password:document.querySelector("#password").value,
+            confirmpassword:document.querySelector("#confirm").value,
+        }
+        if (obj.email=="" || obj.password=="" || obj.confirmpassword=="" || obj.password!=obj.confirmpassword){
+            alert("Invalid input")
+            return;
+        } else {
+            alert("sign in")
+        }
+        A.push(obj);
+        // console.log(A)
+        localStorage.setItem("storeDetails",JSON.stringify(A));
+        
+    }
+    document.querySelector("#second").addEventListener("submit",donefunc);
+    let B=JSON.parse(localStorage.getItem("storedDetails")) || JSON.parse(localStorage.getItem("storedDetails1")) || [];
+    function donefunc(){
+        event.preventDefault();
+        obj1={
+            email1:document.querySelector("#email1").value,
+            password1:document.querySelector("#password1").value,
+        }
+        if (obj1.email1=="" || obj1.password1==""){
+            alert("Invalid input")
+            return;
+        }
+        B.push(obj1);
+        let c=0;
+        for(let i=0;i<A.length-1;i++){
+            if (A[i]!=obj1){
+                c++;
+            } else {
+                c=0;
+            }       
+        }
 
-</sript>
+        if (c>1){
+            alert("Create account")
+        } else {
+            alert("successfully logged In")
+            window.location.href="Navbar.html";
+        }
+        localStorage.setItem("storeDetails1",JSON.stringify(B));
+        
+    }
+    
+    
+
+
+</script>
