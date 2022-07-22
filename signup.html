@@ -130,23 +130,20 @@
             alert("Invalid input")
             return;
         }
-        B.push(obj1);
-        let c=0;
-        for(let i=0;i<A.length-1;i++){
-            if (A[i]!=obj1){
-                c++;
-            } else {
-                c=0;
-            }       
-        }
+        let isSignedin=false;
+        A.forEach(function(ele){
+            if(ele.email===obj1.email1 && ele.password===obj1.password1){
+                isSignedin=true;
+                localStorage.setItem("storedDetails",JSON.stringify(ele));
+                alert("Sign up successfully");
+                window.location.href="Navbar.html";
 
-        if (c>1){
-            alert("Create account")
-        } else {
-            alert("successfully logged In")
-            window.location.href="Navbar.html";
+            }
+        })
+        if(isSignedin==false){
+            alert("Please create account");
         }
-        localStorage.setItem("storeDetails1",JSON.stringify(B));
+        
         
     }
     
